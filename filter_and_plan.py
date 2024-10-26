@@ -7,7 +7,7 @@ import numpy as np
 def LDF_filter(data_graph, query_graph, list_C_u):
     """
     Label Degree Filter(Ullmann needed)
-    复杂度，设查询图节点数为n，数据图节点数为m，查询图平均度数为d，数据图平均度数为D，则复杂度为O(n*m*d*D)
+    复杂度，设查询图节点数为n，数据图节点数为m，查询图平均度数为d，数据图平均度数为D，则复杂度为O(n*m*(d+D))
     """
     
     for idx, node_label in enumerate(query_graph['node_labels']):   # 遍历查询图中的每个节点O(n)
@@ -16,7 +16,7 @@ def LDF_filter(data_graph, query_graph, list_C_u):
         for idx_, node_label_ in enumerate(data_graph['node_labels']):  # 遍历数据图中的每个节点O(m)
             if node_label == node_label_:
                 # check the degree of the nodes
-                if np.sum(data_graph['adj_matrix'][idx_]) >= np.sum(query_graph['adj_matrix'][idx]):
+                if np.sum(data_graph['adj_matrix'][idx_]) >= np.sum(query_graph['adj_matrix'][idx]):    # 复杂度O(d+D)
                     C_u.append(idx_)
         list_C_u.append(C_u)
     return list_C_u
@@ -25,7 +25,7 @@ def LDF_filter(data_graph, query_graph, list_C_u):
 def NLF_filter(data_graph, query_graph, list_C_u):
     """
     Neighborhood Label Filter
-    复杂度，设查询图节点数为n，数据图节点数为m，查询图平均度数为d，数据图平均度数为D，则复杂度为O(n*(d+m*D))
+    复杂度，设查询图节点数为n，数据图节点数为m，查询图平均度数为d，数据图平均度数为D，则复杂度为O(n*m*(d+D)))
     """
     for idx, C_u in enumerate(list_C_u):    # 遍历查询图中的每个节点O(n)
         check_dict_query_node = {} # 用于存储查询图当前节点的邻居节点的label映射
@@ -34,7 +34,7 @@ def NLF_filter(data_graph, query_graph, list_C_u):
             check_dict_query_node[n_label] = check_dict_query_node[n_label] + 1 if n_label in check_dict_query_node else 0
         for idx_ in C_u:    # 遍历数据图中的每个节点O(m)
             # check the neighborhood label
-            for n_idx_ in np.where(data_graph['adj_matrix'][idx_] == 1)[0]:
+            for n_idx_ in np.where(data_graph['adj_matrix'][idx_] == 1)[0]: # 遍历数据图中idx_的邻居节点O(D)
                 n_label_ = data_graph['node_labels'][n_idx_]
                 if n_label_ in check_dict_query_node:
                     check_dict_query_node[n_label_] -= 1

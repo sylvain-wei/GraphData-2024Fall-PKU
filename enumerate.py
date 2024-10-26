@@ -2,6 +2,7 @@ import numpy as np
 import copy
 def convert_to_mapping_matrices(list_C_u, num_nodes_query, num_nodes_data):
     """get the mapping matrices, M's"""
+    # list_C_u: list[list[int]], the candidate nodes for each node in the query graph, 大小上限为n*m
     # 回溯得到所有的mapping matrices
     Ms = []
     unselected = copy.deepcopy(list_C_u)
@@ -24,8 +25,8 @@ def convert_to_mapping_matrices(list_C_u, num_nodes_query, num_nodes_data):
             selected.pop()
         else:
             # 已经选择了idx个节点之后，还有可以搜索到的节点
-            while len(unselected[idx]) > 0: # 单射限制：保证M中，每列只选择一个节点
-                if unselected[idx][0] not in selected:
+            while len(unselected[idx]) > 0:
+                if unselected[idx][0] not in selected:  # 单射限制：保证M中，每列只选择一个节点
                     selected.append(unselected[idx][0])
                     unselected[idx].pop(0)
                     idx += 1

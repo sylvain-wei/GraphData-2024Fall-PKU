@@ -1,0 +1,56 @@
+[
+    {
+        "graph_pairs": [
+            0,
+            0
+        ],
+        "#_matches": 0,
+        "verify_edge_label": false,
+        "result": []
+    },
+    {
+        "graph_pairs": [
+            0,
+            1
+        ],
+        "#_matches": 0,
+        "verify_edge_label": false,
+        "result": []
+    },
+    {
+        "graph_pairs": [
+            0,
+            2
+        ],
+        "#_matches": 0,
+        "verify_edge_label": false,
+        "result": []
+    },
+    {
+        "graph_pairs": [
+            1,
+            0
+        ],
+        "#_matches": 0,
+        "verify_edge_label": false,
+        "result": []
+    },
+    {
+        "graph_pairs": [
+            1,
+            1
+        ],
+        "#_matches": 0,
+        "verify_edge_label": false,
+        "result": []
+    },
+    {
+        "graph_pairs": [
+            1,
+            2
+        ],
+        "#_matches": 0,
+        "verify_edge_label": false,
+        "result": []
+    }
+]

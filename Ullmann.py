@@ -83,7 +83,7 @@ if __name__ == '__main__':
             print()
             all_matches.append(match_result)
     
-    with open(f'match_result_{os.path.basename(args.query)}_{os.path.basename(args.data)}'+('_verify_edge_label' if args.verify_edge_label else '')+'.json', 'w') as f:
+    with open(f'results/match_result_{os.path.basename(args.query)}_{os.path.basename(args.data)}'+('_verify_edge_label' if args.verify_edge_label else '')+'.json', 'w') as f:
         json.dump(all_matches, f, indent=4, ensure_ascii=False)
         
     print("time_filter_plan:", np.mean(time_filter_plan))
