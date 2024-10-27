@@ -2,7 +2,7 @@
 北京大学2024Fall 海量图数据-邹磊-课程资料和作业
 
 第一次作业：
-1. 作业内容：任意实现下述两个子图同构算法中的一个。也可以选择复现其它论文的子图同构算法，但要求在实验报告中说明。
+作业内容：任意实现下述两个子图同构算法中的一个。也可以选择复现其它论文的子图同构算法，但要求在实验报告中说明。
 1) Ullmann Algroithm : 
     Relevant Publication:
     Julian R. Ullmann: An Algorithm for Subgraph Isomorphism.J. ACM 23(1): 31-42 (1976) .
